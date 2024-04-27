@@ -1,0 +1,28 @@
+<launch>
+    <!-- Buoy Detection Node -->
+    <node name="buoy_detection_node" pkg="buoy_detection" type="buoy_detection_node.py" output="screen">
+        <!-- specify node-specific parameters here if they exist -->
+        <param name="camera_topic" value="/camera/image_raw"/>
+        <param name="detection_topic" value="/buoy_detections"/>
+    </node>
+
+    <!-- Navigation Node -->
+    <node name="navigation_node" pkg="navigation" type="navigation_node.py" output="screen">
+        <!-- params for navigation logic -->
+        <param name="detection_topic" value="/buoy_detections"/>
+        <param name="cmd_vel_topic" value="/cmd_vel"/>
+    </node>
+
+    <!-- not sure if we need to include a camera driver launch -->
+    <!-- Include camera launch file -->
+    <include file="$(find usb_cam)/launch/usb_cam.launch">
+        <arg name="video_device" value="/dev/video0"/>
+        <arg name="image_width" value="640"/>
+        <arg name="image_height" value="480"/>
+        <arg name="pixel_format" value="mjpeg"/>
+        <arg name="camera_frame_id" value="usb_cam"/>
+    </include>
+
+    <!-- other setups like transformations would go here -->
+    <!-- static transform publishers can be added -->
+</launch>
