@@ -2,8 +2,8 @@
 
 
 ROS Package Setup
-Create a ROS Package: If you haven't created a ROS package yet, you can create one using: \n
- \t cd ~/catkin_ws/src \n
+Create a ROS Package: If you haven't created a ROS package yet, you can create one using: /n
+ /t cd ~/catkin_ws/src /n
   \tcatkin_create_pkg buoy_detection rospy std_msgs sensor_msgs \n \n
 
   Then, build your package and source the setup files:
