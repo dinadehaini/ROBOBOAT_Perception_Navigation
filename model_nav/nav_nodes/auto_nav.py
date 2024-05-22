@@ -79,14 +79,14 @@ class auto_nav(Node):
         self.navigation_input.publish(msg)
         
 
-    def main(args=None):
-        rclpy.init()
-        navigator = auto_nav()
-        navigator.test_move()
-        rclpy.spin(navigator)
+def main(args=None):
+    rclpy.init()
+    navigator = auto_nav()
+    navigator.test_move()
+    rclpy.spin(navigator)
 
-    if __name__ == '__main__':
-            main()
+if __name__ == '__main__':
+        main()
 
 
 
